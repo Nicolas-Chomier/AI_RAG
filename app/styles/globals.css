@@ -1,0 +1,46 @@
+:root {
+	--Brand: #7148fc;
+	--Darkest: #0c121c;
+	--Dark: #1e293b;
+	--Mid: #b8bfc6;
+	--Light: #f7f8ff;
+	--Lightest: #ffffff;
+	--color-error: #dd4425;
+	--color-success: #3e9b4f;
+	--Border: #0000003f;
+}
+
+* {
+	font-size: 1rem;
+	font-optical-sizing: auto;
+	text-wrap: pretty;
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: border-box;
+	font-family: var(--default-font-family);
+}
+
+*:focus {
+	outline: none;
+}
+
+html,
+body {
+	min-height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+a {
+	border: none;
+	outline: none;
+	text-decoration: none;
+	font-family: inherit;
+	color: inherit;
+}
+
+textarea {
+	resize: none;
+}
+

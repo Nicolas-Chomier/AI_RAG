@@ -1,0 +1,17 @@
+.button {
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 12px;
+	color: var(--Light);
+	padding: 12px 16px;
+	background-color: var(--Dark);
+	display: flex;
+	transition: 0.2s background;
+	align-items: center;
+	gap: 0.6em;
+	cursor: pointer;
+}
+
+.button:hover {
+	background: var(--color-error);
+}

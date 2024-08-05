@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.answerBox {
+	width: 60vw;
+	height: 100%;
+	padding: 18px;
+	box-shadow: inset 0 0 0 1px var(--Border);
+	border-radius: 18px;
+	cursor: default;
+}
+
+.answerBox[data-value='true'] {
+	display: flex;
+}
+
+.answerBox[data-value='false'] {
+	display: none;
+}
