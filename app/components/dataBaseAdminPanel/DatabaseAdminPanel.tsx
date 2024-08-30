@@ -2,14 +2,14 @@
 import React from 'react';
 // External modules / Third-party libraries
 import { Database, DatabaseZap } from 'lucide-react';
-import { Avatar, Flex, IconButton, Popover, Spinner } from '@radix-ui/themes';
+import { Flex, IconButton, Popover, Spinner } from '@radix-ui/themes';
 // Local components
 // Hooks and utilities
 // Configuration
 import { useQuery } from '@tanstack/react-query';
 // Styles
 
-const WATCHDOG_URL = 'http://localhost:3000/api/watchdog/chromaDB';
+const WATCHDOG_URL = `${process.env.NEXT_PUBLIC_AI_URL}/api/watchdog/chromaDB`;
 
 export const DatabaseAdminPanel: React.FC = () => {
 	const { data, isLoading } = useQuery({
@@ -37,14 +37,7 @@ export const DatabaseAdminPanel: React.FC = () => {
 				</IconButton>
 			</Popover.Trigger>
 			<Popover.Content width='360px'>
-				<Flex gap='3'>
-					<Avatar
-						size='2'
-						src='https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?&w=64&h=64&dpr=2&q=70&crop=focalpoint&fp-x=0.67&fp-y=0.5&fp-z=1.4&fit=crop'
-						fallback='A'
-						radius='full'
-					/>
-				</Flex>
+				<Flex gap='3'>A finir !</Flex>
 			</Popover.Content>
 		</Popover.Root>
 	);

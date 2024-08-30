@@ -6,6 +6,7 @@ export async function GET() {
 
 	try {
 		const response = await fetch(`${path}/api/v1`);
+
 		if (!response.ok) {
 			throw new Error('Failed to fetch from ChromaDB server');
 		}
