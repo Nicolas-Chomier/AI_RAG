@@ -1,9 +1,18 @@
 import { NextResponse } from 'next/server';
 
+// Définition du type CollectionsResponse
+type CollectionsResponse = {
+	error: boolean;
+	message: string;
+	status: number;
+	data?: any;
+};
+
+// Fonction validResponse existante
 export const validResponse = (
 	data: any = {},
-	validMessage: string | undefined = 'OK',
-) => {
+	validMessage: string = 'OK',
+): CollectionsResponse => {
 	return {
 		error: false,
 		message: validMessage,
@@ -13,13 +22,14 @@ export const validResponse = (
 };
 
 export const invalidResponse = (
-	errorMessage: string,
-	statusCode: number = 400,
-) => {
+	message: string = 'Une erreur est survenue',
+	status: number = 500,
+): CollectionsResponse => {
 	return {
 		error: true,
-		message: errorMessage,
-		status: statusCode,
+		message: message,
+		status: status,
+		// Pas de data dans le cas d'une erreur
 	};
 };
 

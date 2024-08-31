@@ -7,8 +7,11 @@ import { TDataset } from './utils/types';
 import toast, { Toaster } from 'react-hot-toast';
 import { ControlArea } from './components/controlArea/ControlArea';
 import { AnswerArea } from './components/answer/AnswerArea';
-import { QuestionArea } from './components/question/QuestionArea';
+
 import styles from './styles/page.module.css';
+import { Flex, IconButton } from '@radix-ui/themes';
+import { TextBox } from './components/textBox/TextBox';
+import { SendHorizontal } from 'lucide-react';
 
 const Home = () => {
 	const [fileName, setFileName] = useState('');
@@ -16,6 +19,7 @@ const Home = () => {
 	const [answerIsLoading, setAnswerIsLoading] = useState(false);
 	const [dataset, setDataset] = useState<TDataset | undefined>(undefined);
 	const [answer, setAnswer] = useState('');
+	const [question, setQuestion] = useState('');
 
 	const uploadingFile = useMutation({
 		mutationFn: (document: any) => {
@@ -103,6 +107,7 @@ const Home = () => {
 			const result = await response.json();
 			if (response.status === 200) {
 				setAnswer(result.result);
+				setQuestion('');
 			} else {
 				setAnswer('');
 			}
@@ -121,6 +126,11 @@ const Home = () => {
 		if (fileName) {
 			generation.mutate({ fileName: fileName, question: question });
 		}
+	};
+
+	//
+	const handleQuestion = (value: string) => {
+		setQuestion(value);
 	};
 
 	return (
@@ -143,10 +153,25 @@ const Home = () => {
 			</div>
 
 			<div className={styles.bottom}>
-				<QuestionArea
-					handleSendQuestion={handleSendQuestion}
-					placeholder={'Une question ?'}
-				/>
+				<Flex gap='2' className={styles.questionBox}>
+					<TextBox
+						name={'QuestionBox'}
+						placeholder={'Une question ?'}
+						handleChange={handleQuestion}
+						value={question}
+						className={styles.textArea}
+					></TextBox>
+					<IconButton
+						size={'4'}
+						radius='large'
+						color='gray'
+						variant='solid'
+						highContrast
+						onClick={() => handleSendQuestion(question)}
+					>
+						<SendHorizontal size={26} strokeWidth={1.8} />
+					</IconButton>
+				</Flex>
 			</div>
 		</div>
 	);
